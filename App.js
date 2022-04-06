@@ -90,7 +90,14 @@ export default function App() {
   .start()
 
   Animated.timing(offsetValue,{
-    toValue:showMenu? 0: 220,
+    toValue:showMenu? 0: 230,
+    duration:300,
+    useNativeDriver:true
+  })
+  .start()
+
+  Animated.timing(closeButtonoffset,{
+    toValue:!showMenu? -30: 0,
     duration:300,
     useNativeDriver:true
   })
@@ -99,7 +106,7 @@ export default function App() {
   setShowMenu(!showMenu)
 }}>
 
-  <Image  source={menu} style={{width:20,height:20, tintColor:'black',marginTop:40 }}></Image>
+  <Image  source={showMenu? close:menu} style={{width:20,height:20, tintColor:'black',marginTop:40 }}></Image>
 
 </TouchableOpacity>
   <Text style={{fontSize:30,fontWeight:'bold', tintColor:'black',paddingTop:20}}>{currentTab}</Text>
